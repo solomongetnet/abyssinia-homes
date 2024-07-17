@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect } from "react";
 import Routes from "./routes";
 import { useAppDispatch } from "./store/hooks/redux.hooks";
 import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
+import "aos/dist/aos.css";
 import { useLazyFetchMyAccountQuery } from "./api/services/account.service";
 import { Toaster } from "./components/ui/toaster";
 import { useLocation } from "react-router-dom";
@@ -43,14 +43,8 @@ function App() {
     const getLocation = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-          (position: any) => {
-            const { latitude, longitude } = position.coords;
-            console.log("Lat", latitude);
-            console.log("Lng", longitude);
-          },
-          (error) => {
-            console.log(error);
-          }
+          () => {},
+          () => {}
         );
       }
     };

@@ -23,7 +23,7 @@ const SingleAgentPage = lazy(
   () => import("@/pages/single-agent/single-agent-page")
 );
 const AccountLayout = lazy(() => import("@/layouts/account/account.layout"));
-const DashboardPage = lazy(
+const AgentDashboardPage = lazy(
   () => import("@/pages/(account)/dashboard/dashboard-page")
 );
 const MyProfilePage = lazy(
@@ -47,11 +47,16 @@ const EditPropertyPage = lazy(
   () => import("@/pages/(account)/edit-property/edit-property-page")
 );
 
+const Admin_UsersPage = lazy(() => import("@/pages/(admin)/users/users-page"));
+const AdminDashboardPage = lazy(
+  () => import("@/pages/(admin)/dashboard/dashboard")
+);
+const Admin_Properties = lazy(
+  () => import("@/pages/(admin)/properties/properties-page")
+);
+
 // Auth states
 import useAuth from "@/hooks/use-auth";
-import Admin_UsersPage from "@/pages/(admin)/users/users-page";
-import AdminDashboardPage from "@/pages/(admin)/dashboard/dashboard";
-import Admin_Properties from "@/pages/(admin)/properties/properties-page";
 
 // Initialize Routes
 const Routes = () => {
@@ -129,18 +134,18 @@ const Routes = () => {
       ],
     },
 
-    // Account routes with account layout
+    // Account routes with account layout / that hold admin, agent and user accounts
     {
       element: isLoggedIn ? <AccountLayout /> : <Navigate to={"/auth/login"} />,
       children: [
         {
           element:
-            role === "agent" ? (
-              <DashboardPage />
+            role === "agent" ? ( // if role is agent navigate to agent dashboard
+              <AgentDashboardPage />
             ) : role === "admin" ? (
-              <AdminDashboardPage />
+              <AdminDashboardPage /> // if role is admin navigate to admin dashboard
             ) : (
-              <Navigate to={"/"} />
+              <Navigate to={"/"} /> // other roles can't access any dashboard ex users
             ),
           path: "/account/dashboard",
         },
@@ -182,7 +187,7 @@ const Routes = () => {
         {
           element:
             isLoggedIn && role === "admin" ? (
-              <Admin_UsersPage />
+              <Admin_UsersPage /> // only admin can access this route
             ) : (
               <Navigate to={"/"} />
             ),
@@ -191,7 +196,7 @@ const Routes = () => {
         {
           element:
             isLoggedIn && role === "admin" ? (
-              <Admin_Properties />
+              <Admin_Properties /> // only admins can access this route
             ) : (
               <Navigate to={"/"} />
             ),

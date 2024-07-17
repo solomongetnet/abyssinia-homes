@@ -26,6 +26,11 @@ const links: Tlinks[] = [
     icon: <CiViewList className="text-xl" />,
   },
   {
+    href: "/account/my-properties",
+    label: "My Properties",
+    icon: <CiViewList className="text-xl" />,
+  },
+  {
     href: "/account/my-profile",
     label: "My Profile",
     icon: <CiUser className="text-xl" />,

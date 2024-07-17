@@ -1,6 +1,6 @@
 import DashboardWrapper from "./_components/dashboard-wrapper";
 
-const DashboardPage = () => {
+const AgentDashboardPage = () => {
   return (
     <div className="min-h-screen space-y-10">
       <header className="" data-aos="fade-left">
@@ -12,4 +12,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default AgentDashboardPage;
