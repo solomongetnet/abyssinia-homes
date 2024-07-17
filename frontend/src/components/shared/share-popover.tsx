@@ -3,7 +3,6 @@ import { Copy, Share2, X } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   FaFacebookF,
-  FaInstagram,
   FaTelegram,
   FaWhatsapp,
 } from "react-icons/fa6";
