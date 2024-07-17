@@ -16,10 +16,7 @@ server.use(express.static("public"));
 server.use(helmet());
 server.use(
   cors({
-    origin: [
-      process.env.FRONTEND_URL as string,
-      process.env.ADMIN_FRONTEND_URL as string,
-    ],
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
@@ -27,7 +24,9 @@ server.use(cookieParser());
 server.use(express.json());
 
 server.get("/", (req: Request, res: Response) => {
-  res.send("Server Running");
+  res.json({
+    message: "Server is running",
+  });
 });
 
 // Custom Middlewares
@@ -39,7 +38,7 @@ server.use(rootRouter);
 server.use(notFound);
 server.use(errorHandler);
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 server.listen(PORT, () => {
   console.log(`Server is runnig on http://localhost:${PORT}.`.bgBlue.white);

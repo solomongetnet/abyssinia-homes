@@ -18,16 +18,15 @@ const server = (0, express_1.default)();
 server.use(express_1.default.static("public"));
 server.use((0, helmet_1.default)());
 server.use((0, cors_1.default)({
-    origin: [
-        process.env.FRONTEND_URL,
-        process.env.ADMIN_FRONTEND_URL,
-    ],
+    origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
 server.use((0, cookie_parser_1.default)());
 server.use(express_1.default.json());
 server.get("/", (req, res) => {
-    res.send("Server Running");
+    res.json({
+        message: "Server is running",
+    });
 });
 // Custom Middlewares
 server.use((req, res, next) => {
