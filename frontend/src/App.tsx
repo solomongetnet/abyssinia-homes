@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import { resetPropertyForm } from "./store/slices/property.slices";
 import { useLogoutMutation } from "./api/services/auth.service";
 import useAuth from "./hooks/use-auth";
+import { useDispatch } from "react-redux";
 
 function App() {
   const { pathname } = useLocation();
@@ -17,13 +18,10 @@ function App() {
   // Fetch user account when user login and when the page initial load
   const { token } = useAuth();
   const [fetchCurrentUserAccount] = useLazyFetchMyAccountQuery();
-  const [logout] = useLogoutMutation();
 
   useLayoutEffect(() => {
     if (token) {
       fetchCurrentUserAccount();
-    } else {
-      logout();
     }
   }, [token]);
 
