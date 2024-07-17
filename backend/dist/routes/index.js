@@ -1,0 +1,25 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_routes_1 = __importDefault(require("./auth.routes"));
+const account_routes_1 = __importDefault(require("./account.routes"));
+const profile_routes_1 = __importDefault(require("./profile.routes"));
+const property_routes_1 = __importDefault(require("./property.routes"));
+const user_routes_1 = __importDefault(require("./user.routes"));
+const agent_routes_1 = __importDefault(require("./agent.routes"));
+const favorite_routes_1 = __importDefault(require("./favorite.routes"));
+const admin_routes_1 = __importDefault(require("./admin.routes"));
+const router = (0, express_1.Router)();
+router.use("/auth", auth_routes_1.default);
+router.use("/account", account_routes_1.default);
+router.use("/property", property_routes_1.default);
+router.use("/favorite", favorite_routes_1.default);
+router.use("/profile", profile_routes_1.default);
+router.use("/user", user_routes_1.default);
+router.use("/agent", agent_routes_1.default);
+router.use("/admin", admin_routes_1.default);
+const rootRouter = router;
+exports.default = rootRouter;

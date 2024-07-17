@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/server",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "nodemon --exec ts-node src/server",
-    "start": "ts-node src/server.ts",
+    "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -23,6 +22,7 @@
     "@types/node": "^20.14.2",
     "@types/nodemailer": "^6.4.15",
     "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
     "typescript": "^5.4.5"
   },
   "dependencies": {
