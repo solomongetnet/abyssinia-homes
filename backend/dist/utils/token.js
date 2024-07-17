@@ -10,7 +10,7 @@ const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;
 const generateAccessToken = (payload, expiresIn) => {
     return jsonwebtoken_1.default.sign({ userId: payload.userId, role: payload.role }, accessTokenSecret, {
-        expiresIn: expiresIn || "1m",
+        expiresIn: expiresIn || "20m",
     });
 };
 exports.generateAccessToken = generateAccessToken;

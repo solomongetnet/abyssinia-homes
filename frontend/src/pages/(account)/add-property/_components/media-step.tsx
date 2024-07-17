@@ -75,7 +75,6 @@ const MediaStep: FC<IProps> = ({ prevStep }) => {
   };
 
   const handleSubmitProperty = async () => {
-    console.log(propertyData);
     if (files.length === 0) {
       toast({
         title: "Invalid",
@@ -107,7 +106,7 @@ const MediaStep: FC<IProps> = ({ prevStep }) => {
       navigate("/account/my-properties");
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Error while publish your property",
         description: error?.data.message,
       });
     }

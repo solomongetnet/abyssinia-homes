@@ -12,7 +12,7 @@ export const generateAccessToken = (
     { userId: payload.userId, role: payload.role },
     accessTokenSecret,
     {
-      expiresIn: expiresIn || "1m",
+      expiresIn: expiresIn || "20m",
     }
   );
 };
