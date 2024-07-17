@@ -27,7 +27,7 @@ const AgentSection = () => {
                 >
                   <div className="w-full flex flex-col items-center gap-2">
                     <Avatar className="size-[90px] sm:size-[120px] border ring-offset-2">
-                      <AvatarImage src={a.img} />
+                      <AvatarImage src={a.img} loading="lazy" />
                       <AvatarFallback>{a.name[0]}</AvatarFallback>
                     </Avatar>
 

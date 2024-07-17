@@ -1,4 +1,3 @@
-import { HomeIcon } from "lucide-react";
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import Nav from "./_nav";
@@ -8,6 +7,8 @@ import CustomNavigate from "@/utils/navigate";
 import SmallDeviceMenu from "./_small-device-menu";
 import { ModeToggle } from "../mode-toggle";
 import useAuth from "@/hooks/use-auth";
+import LogoCard from "../logo";
+
 interface HeaderProps {
   className?: string;
 }
@@ -22,10 +23,11 @@ const Header: FC<HeaderProps> = ({ className }) => {
       )}
     >
       <CustomNavigate to="/">
-        <div className="text-2xl flex items-center gap-2">
+        <LogoCard className="w-[60px] sm:w-[75px]"/>
+        {/* <div className="text-2xl flex items-center gap-2">
           <HomeIcon />
           Abisinya
-        </div>
+        </div> */}
       </CustomNavigate>
 
       {/* Nav Links */}

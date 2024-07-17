@@ -18,6 +18,7 @@ const SignupForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     defaultValues: {
       username: "",
@@ -29,6 +30,8 @@ const SignupForm = () => {
     },
     resolver: yupResolver(SignupValidationSchema),
   });
+
+  const accountType = watch("role");
   const onSubmit = async (data: any) => {
     try {
       const res: { message: string } = await signupMutation({
@@ -71,20 +74,6 @@ const SignupForm = () => {
         <Input type="email" className="py-6" {...register("email")} />
         <ErrorMessage error={errors.email?.message} />
       </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="" className="font-[600] text-md">
-          Phone Number
-        </label>
-        <Input type="number" className="py-6" {...register("phoneNumber")} />
-        <ErrorMessage error={errors.phoneNumber?.message} />
-      </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="" className="font-[600] text-md">
-          Password
-        </label>
-        <Input type="password" className="py-6" {...register("password")} />
-        <ErrorMessage error={errors.password?.message} />
-      </div>
 
       <div className="flex flex-col gap-1">
         <label htmlFor="" className="font-[600] text-md">
@@ -117,6 +106,23 @@ const SignupForm = () => {
           </div>
         </div>
         <ErrorMessage error={errors.role?.message} />
+      </div>
+
+      {accountType === "agent" && (
+        <div className="flex flex-col gap-1">
+          <label htmlFor="" className="font-[600] text-md">
+            Phone Number
+          </label>
+          <Input type="number" className="py-6" {...register("phoneNumber")} />
+          <ErrorMessage error={errors.phoneNumber?.message} />
+        </div>
+      )}
+      <div className="flex flex-col gap-1">
+        <label htmlFor="" className="font-[600] text-md">
+          Password
+        </label>
+        <Input type="password" className="py-6" {...register("password")} />
+        <ErrorMessage error={errors.password?.message} />
       </div>
 
       {/* Actions */}

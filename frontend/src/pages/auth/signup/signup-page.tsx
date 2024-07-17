@@ -13,7 +13,7 @@ const SignupPage: React.FC = () => (
       </div>
     </div>
 
-    <div className="h-screen relative overflow-y-scroll w-full pt-20 md:pt-10 max-md:px-8 md:pl-24">
+    <div className="h-screen flex items-center relative pt-40 md:pt-10 max-md:px-8 md:pl-24 overflow-y-scroll w-full">
       <CustomNavigate to="/">
         <Button
           size="icon"

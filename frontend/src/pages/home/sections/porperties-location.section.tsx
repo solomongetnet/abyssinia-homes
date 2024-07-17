@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { propertiesLocation } from "@/constants/properties-location";
+import CustomNavigate from "@/utils/navigate";
 import { ArrowUpRight } from "lucide-react";
 
 const PropertiesLocation = () => {
@@ -27,6 +28,7 @@ const PropertiesLocation = () => {
                     src={l.img}
                     className="size-full object-cover group-hover:scale-125 transition-4"
                     alt=""
+                    loading="lazy"
                   />
                 </div>
 
@@ -38,9 +40,11 @@ const PropertiesLocation = () => {
                     </p>
                   </div>
 
-                  <Button className="rounded-full" size={"icon"}>
-                    <ArrowUpRight />
-                  </Button>
+                  <CustomNavigate to="/properties" className="rounded-full">
+                    <Button className="rounded-full" size={"icon"}>
+                      <ArrowUpRight />
+                    </Button>
+                  </CustomNavigate>
                 </div>
               </div>
             ))}

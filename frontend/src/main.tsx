@@ -13,7 +13,7 @@ import Loader from "./components/ui/loader.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ErrorBoundary FallbackComponent={ErrorPage}>
     <ReduxProvider>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <BrowserRouter>
           <Suspense
             fallback={

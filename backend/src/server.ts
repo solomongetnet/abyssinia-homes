@@ -39,7 +39,7 @@ server.use(rootRouter);
 server.use(notFound);
 server.use(errorHandler);
 
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT
 
 server.listen(PORT, () => {
   console.log(`Server is runnig on http://localhost:${PORT}.`.bgBlue.white);

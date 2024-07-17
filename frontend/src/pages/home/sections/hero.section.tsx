@@ -45,9 +45,9 @@ const HeroSection = () => {
           data-aos="fade-up"
           data-aos-delay={150}
         >
-          <h2 className="text-white text-4xl sm:text-6xl font-[900]">
+          <h2 className="text-white text-5xl sm:text-6xl text-pretty font-[900]">
             The Simplest way to find your
-            <br />
+            <br className="max-sm:hidden" />
             new Home at Ethiopia{" "}
           </h2>
         </div>

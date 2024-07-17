@@ -74,7 +74,8 @@ const PropertyCard: FC<ICardProps> = ({
           <img
             src={data.images[0]!}
             className="absolute inset-0 size-full object-cover group-hover:scale-125 transition-4"
-            alt=""
+            alt="Property Image"
+            loading="lazy"
           />
         </CustomNavigate>
       </div>

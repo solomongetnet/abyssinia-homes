@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import LogoCard from "../logo";
 
 const Footer = () => {
   return (
@@ -11,11 +12,11 @@ const Footer = () => {
         <div className="flex flex-wrap gap-5 items-start justify-between">
           {/* Left */}
           <div className="flex flex-col gap-1">
-            <h2 className="font-extrabold text-2xl">Abissinya Homes</h2>
-            <p className="text-sm font-[100] text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              <br className="max-md:hidden" /> elit. Velit reprehenderit impedit
-              quis Iusto.
+            <LogoCard className="w-[90px] sm:w-[130px]" />
+            <p className="text-sm font-[800] text-muted-foreground">
+              Amazing property webiste for agent, buyer
+              <br className="max-sm:hidden" />
+              and companies for ethiopian
             </p>
           </div>
 
