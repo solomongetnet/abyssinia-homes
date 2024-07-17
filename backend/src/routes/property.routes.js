@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const property_controller_1 = __importDefault(require("../controller/property.controller"));
+const multer_middleware_1 = require("../middleware/multer.middleware");
+const parser_1 = require("../middleware/parser");
+const role_1 = require("../helper/role");
+const router = (0, express_1.Router)();
+router.get("/", property_controller_1.default.getProperties);
+router.get("/nearby", property_controller_1.default.getNearbyProperties);
+router.get("/features", property_controller_1.default.getFeaturesProperties);
+router.get("/single/:id", property_controller_1.default.getSingleProperty);
+router.post("/", auth_middleware_1.authenticateToken, multer_middleware_1.upload.array("images", 8), (0, parser_1.jsonParser)("data"), (0, role_1.roleChecker)(["agent", "admin"], "Agent only can post new property!"), property_controller_1.default.createProperty);
+router.put("/edit/:id", auth_middleware_1.authenticateToken, property_controller_1.default.updateProperty);
+router.delete("/delete/:id", auth_middleware_1.authenticateToken, property_controller_1.default.deleteProperty);
+router.get("/my_properties", auth_middleware_1.authenticateToken, property_controller_1.default.getMyProperties);
+const propertyRoutes = router;
+exports.default = propertyRoutes;
