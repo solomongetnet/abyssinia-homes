@@ -44,12 +44,6 @@ const authServices = api.injectEndpoints({
         body: { newPassword },
       }),
     }),
-    refreshToken: builder.mutation({
-      query: () => ({
-        url: "/auth/refresh-token",
-        method: "GET",
-      }),
-    }),
     logout: builder.mutation<{ message: string }, void>({
       query: () => ({
         url: "/auth/logout",
@@ -64,6 +58,12 @@ const authServices = api.injectEndpoints({
             console.log("Error occured when logging out");
           });
       },
+    }),
+    refreshToken: builder.mutation({
+      query: () => ({
+        url: "/auth/refresh-token",
+        method: "GET",
+      }),
     }),
   }),
 });

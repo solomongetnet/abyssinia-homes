@@ -46,7 +46,6 @@ const baseQueryWithReauth: ReturnType<typeof fetchBaseQuery> = async (
 const api = createApi({
   reducerPath: "api",
   baseQuery: baseQueryWithReauth,
-  refetchOnMountOrArgChange: true,
   refetchOnReconnect: true,
   tagTypes: [
     "user_account",
