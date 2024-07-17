@@ -7,9 +7,7 @@ import { useLazyFetchMyAccountQuery } from "./api/services/account.service";
 import { Toaster } from "./components/ui/toaster";
 import { useLocation } from "react-router-dom";
 import { resetPropertyForm } from "./store/slices/property.slices";
-import { useLogoutMutation } from "./api/services/auth.service";
 import useAuth from "./hooks/use-auth";
-import { useDispatch } from "react-redux";
 
 function App() {
   const { pathname } = useLocation();
