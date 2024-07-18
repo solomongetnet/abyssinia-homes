@@ -61,7 +61,7 @@ const SmallDeviceMenu = () => {
               <div className="w-full ">
                 <h2 className="font-bold">Welcome</h2>
               </div>
-              <div className="flex-col fap-2">
+              <div className="flex-col gap-2">
                 <CustomNavigate className="w-full" to="/auth/login">
                   <Button className="w-full">Login</Button>
                 </CustomNavigate>

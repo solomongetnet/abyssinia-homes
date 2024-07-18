@@ -121,7 +121,7 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
             </DialogDescription>
           </DialogHeader>
 
-          <div className="pt-4 px-2 flex flex-col gap-8 h-[70vh] sm:h-[450px] overflow-y-scroll">
+          <div className="pt-4 px-2 flex flex-col gap-8 h-[80vh] sm:h-[450px] overflow-y-scroll">
             <div className="flex flex-col gap-6 w-full">
               <div className="flex flex-col gap-2">
                 <DialogTitle className="text-md">Properties Status</DialogTitle>
@@ -185,9 +185,9 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
                 <DialogTitle className="text-md">
                   Properties Amenties
                 </DialogTitle>
-                <ul className="w-full grid grid-cols-3 gap-y-3">
+                <ul className="w-full flex flex-wrap gap-x-6 gap-y-3 sm:grid sm:grid-cols-3 sm:gap-3 ">
                   {AmenitiesData.map((a, idx) => (
-                    <li className="flex items-center gap-1" key={a + idx + Math.random() * 200}>
+                    <li className="flex  sm:items-center gap-1" key={a + idx + Math.random() * 200}>
                       <input
                         checked={selectedAmenities.includes(a)}
                         type="checkbox"

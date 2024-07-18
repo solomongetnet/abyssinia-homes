@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const PublicActions = () => {
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-2">
       <CustomNavigate to="/auth/login">
         <Button>Login</Button>
       </CustomNavigate>
