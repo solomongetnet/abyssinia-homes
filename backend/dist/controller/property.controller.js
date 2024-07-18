@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const property_model_1 = __importDefault(require("../models/property.model"));
 const validate_new_property_1 = require("../validator/validate-new-property");
-const promises_1 = require("fs/promises");
 const cloudinary_1 = require("../helper/cloudinary");
 const cloudinary_2 = __importDefault(require("../config/cloudinary"));
 const users_model_1 = __importDefault(require("../models/users.model"));
@@ -84,6 +83,7 @@ const getSingleProperty = (0, express_async_handler_1.default)((req, res) => __a
     res.json(propertyData);
 }));
 const createProperty = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     // Checking if there is validation error
     const { error } = (0, validate_new_property_1.validateNewProperty)(req.body);
     if (error) {
@@ -91,25 +91,24 @@ const createProperty = (0, express_async_handler_1.default)((req, res) => __awai
         throw new Error(error);
     }
     // Uploading images files on clodinary then get secure url;
-    let images = [];
-    // for testing purpose
-    // for (let i = 0; i < 4; i++) {
-    //   images.push(imagesUrl[Math.floor(Math.random() * imagesUrl.length)]);
-    // }
-    const files = req.files;
-    for (const file of files) {
-        const { path } = file;
-        const newPath = yield (0, cloudinary_1.uploader)(path, "property_images");
-        yield (0, promises_1.unlink)(file.path);
-        images.push(newPath.secure_url);
+    let files = (_a = req === null || req === void 0 ? void 0 : req.files) === null || _a === void 0 ? void 0 : _a.images;
+    if (!Array.isArray(files)) {
+        files = [files]; // If only one file, make it an array
     }
-    // Creating new property data
-    const createdProperty = yield property_model_1.default.create(Object.assign(Object.assign({ author: req.user._id }, req.body), { images }));
+    const uploadPromises = files.map((file) => {
+        return (0, cloudinary_1.uploader)(file.tempFilePath, "property_images");
+    });
+    const results = yield Promise.all(uploadPromises);
+    const uploadedImages = results.map((result) => {
+        return result.secure_url;
+    });
+    // // Creating new property data
+    const createdProperty = yield property_model_1.default.create(Object.assign(Object.assign({ author: req.user._id }, req.body), { images: uploadedImages }));
     // saving in to user schema
     yield users_model_1.default.findByIdAndUpdate(req === null || req === void 0 ? void 0 : req.user._id, {
         $push: { properties: createdProperty._id },
     });
-    res.json({ message: "Created Successfull", createdProperty });
+    res.json({ message: "Created Successfull" });
 }));
 const updateProperty = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;

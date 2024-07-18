@@ -22,6 +22,7 @@ function connectDB() {
         }
         catch (error) {
             console.error("MongoDB connection error:", error);
+            // setTimeout(connectDB, 5000);
             process.exit(1); // Exit process with failure
         }
     });
