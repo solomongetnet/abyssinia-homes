@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import useAuth from "@/hooks/use-auth";
 import AgentSidebar from "./agent-sidebar";
 import UserSidebar from "./user-sidebar";
+import AdminSidebar from "./admin-sidebar";
 
 const MenuDrawer = () => {
   const { role } = useAuth();
@@ -24,11 +25,12 @@ const MenuDrawer = () => {
       <DrawerTrigger>
         <Menu />
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="max-h-[95vh]">
         <DrawerHeader></DrawerHeader>
-        <div className="h-fit">
+        <div className="overflow-y-scroll max-h-[90vh]">
           {role === "agent" && <AgentSidebar className="w-full h-fit" />}
           {role === "user" && <UserSidebar className="w-full h-fit" />}
+          {role === "admin" && <AdminSidebar className="w-full h-fit" />}
         </div>
         <DrawerFooter></DrawerFooter>
       </DrawerContent>

@@ -8,6 +8,7 @@ async function connectDB(): Promise<void> {
     console.log("MongoDB connected".america);
   } catch (error) {
     console.error("MongoDB connection error:", error);
+    // setTimeout(connectDB, 5000);
     process.exit(1); // Exit process with failure
   }
 }

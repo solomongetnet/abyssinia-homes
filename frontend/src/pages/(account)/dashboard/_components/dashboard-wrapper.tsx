@@ -86,9 +86,7 @@ const DashboardWrapper = () => {
             <h2 className="font-[700] text-xl group-hover:text-white transition">
               Reviews
             </h2>
-            <p className="font-[300] group-hover:text-white transition">
-              {data?.reviewsCount}
-            </p>
+            <p className="font-[300] group-hover:text-white transition">0</p>
           </div>
         </div>
       </div>

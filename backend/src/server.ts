@@ -8,6 +8,7 @@ import { notFound } from "./middleware/not-found";
 import rootRouter from "./routes";
 import connectDB from "./config/db";
 import cookieParser from "cookie-parser";
+import fileUpload from "express-fileupload";
 
 const server: Application = express();
 
@@ -18,6 +19,12 @@ server.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
+  })
+);
+server.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/", // Use in-memory storage
   })
 );
 server.use(cookieParser());

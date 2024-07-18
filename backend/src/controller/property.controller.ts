@@ -104,27 +104,25 @@ const createProperty = asyncHandler(async (req: _Request, res: Response) => {
   }
 
   // Uploading images files on clodinary then get secure url;
-  let images: string[] = [];
-
-  // for testing purpose
-  // for (let i = 0; i < 4; i++) {
-  //   images.push(imagesUrl[Math.floor(Math.random() * imagesUrl.length)]);
-  // }
-
-  const files: any = req.files;
-
-  for (const file of files) {
-    const { path } = file;
-    const newPath = await uploader(path, "property_images");
-    await unlink(file.path);
-    images.push(newPath.secure_url);
+  let files: any = req?.files?.images;
+  if (!Array.isArray(files)) {
+    files = [files]; // If only one file, make it an array
   }
 
-  // Creating new property data
+  const uploadPromises = files.map((file: any) => {
+    return uploader(file.tempFilePath, "property_images");
+  });
+
+  const results = await Promise.all(uploadPromises);
+  const uploadedImages = results.map((result) => {
+    return result.secure_url;
+  });
+
+  // // Creating new property data
   const createdProperty: any = await PropertyModel.create({
     author: req.user._id,
     ...req.body,
-    images,
+    images: uploadedImages,
   });
 
   // saving in to user schema
@@ -132,7 +130,7 @@ const createProperty = asyncHandler(async (req: _Request, res: Response) => {
     $push: { properties: createdProperty._id },
   });
 
-  res.json({ message: "Created Successfull", createdProperty });
+  res.json({ message: "Created Successfull" });
 });
 
 const updateProperty = asyncHandler(async (req: _Request, res: Response) => {

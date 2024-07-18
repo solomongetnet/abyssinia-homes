@@ -37,7 +37,7 @@ function UsersContainer({ setTotalPropertiesCount, ...props }: any) {
 
   if (isLoading) {
     return (
-      <div className="pb-[50vh] h-[100vh] w-full flex justify-center items-center ">
+      <div className="h-[70vh] flex justify-center items-center">
         <Loader />
       </div>
     ); // Show loading indicator while fetching data
@@ -45,7 +45,7 @@ function UsersContainer({ setTotalPropertiesCount, ...props }: any) {
 
   if (isError) {
     return (
-      <div className="flex-1 w-full mt-32 flex justify-center ">
+      <div className=" h-[70vh] flex justify-center items-center">
         <div className="text-lg">Something went wrong please try again</div>
       </div>
     ); // Show error message if fetching data fails

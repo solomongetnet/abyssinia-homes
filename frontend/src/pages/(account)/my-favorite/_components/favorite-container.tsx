@@ -36,7 +36,7 @@ function FavoritesContainer({ setTotalFavoritesCount, ...props }: any) {
 
   if (isLoading) {
     return (
-      <div className="pb-[50vh] h-[100vh] w-full flex justify-center items-center ">
+      <div className="h-[70vh] flex justify-center items-center">
         <Loader />
       </div>
     ); // Show loading indicator while fetching data
@@ -44,7 +44,7 @@ function FavoritesContainer({ setTotalFavoritesCount, ...props }: any) {
 
   if (isError) {
     return (
-      <div className="flex-1 w-full mt-32 flex justify-center ">
+      <div className="flex-1 w-full h-[70vh] flex justify-center items-center ">
         <div className="text-lg">Something went wrong please try again</div>
       </div>
     ); // Show error message if fetching data fails
@@ -52,7 +52,7 @@ function FavoritesContainer({ setTotalFavoritesCount, ...props }: any) {
 
   if (!data || data.favorites.length === 0) {
     return (
-      <div className="flex-1 w-full my-32 flex justify-center ">
+      <div className="flex-1 w-full h-[70vh] flex justify-center items-center ">
         <div className="flex flex-col gap-2 text-center">
           <h2 className="text-xl font-bold">Oops! No Favorite Properties</h2>
           <p className="text-md font-light leading-tight">

@@ -16,9 +16,11 @@ const AccountLayout = () => {
       {role === "user" && (
         <UserSidebar className="max-lg:hidden z-10 fixed top-0 pt-[130px] left-0 bottom-0 h-screen w-[18%]" />
       )}
+    
       {role === "agent" && (
         <AgentSidebar className="max-lg:hidden z-10 fixed top-0 pt-[130px] left-0 bottom-0 h-screen w-[18%]" />
       )}
+     
       {role === "admin" && (
         <AdminSidebar className="max-lg:hidden z-10 fixed top-0 pt-[130px] left-0 bottom-0 h-screen w-[18%]" />
       )}
