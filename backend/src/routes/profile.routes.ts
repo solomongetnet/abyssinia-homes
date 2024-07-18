@@ -1,16 +1,18 @@
 import { Router } from "express";
 import { authenticateToken } from "../middleware/auth.middleware";
 import profileController from "../controller/profile.controller";
-import { upload } from "../middleware/multer.middleware";
+import fileUpload from "express-fileupload";
 
 const router = Router();
 
-router.put(
-  "/avatar",
-  authenticateToken,
-  upload.single("avatar"),
-  profileController.updateAvatar
+router.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/", // Use in-memory storage
+  })
 );
+
+router.put("/avatar", authenticateToken, profileController.updateAvatar);
 
 router.delete("/avatar", authenticateToken, profileController.removeAvatar);
 

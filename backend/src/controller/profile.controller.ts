@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import UserModel from "../models/users.model";
-import { unlink } from "fs/promises";
 import { extractPublicIdFromUrl, uploader } from "../helper/cloudinary";
 import cloudinary from "../config/cloudinary";
 
@@ -18,11 +17,12 @@ const updateAvatar = asyncHandler(async (req: _Request, res: Response) => {
   }
 
   // get path from request then upload using custom function the get newPath from cloudinary
-  const path: any = req.file?.path;
+  // @ts-ignore
+  let image: any = req?.files.avatar;
+
+  const path: any = image.tempFilePath;
   const newPath = await uploader(path, "avatar");
 
-  // Remove from this server after uploaded on cloudinary
-  await unlink(path);
   await UserModel.findByIdAndUpdate(userId, { avatar: newPath.secure_url });
   res.json({ message: "Avatar Updated Successfully" });
 });
