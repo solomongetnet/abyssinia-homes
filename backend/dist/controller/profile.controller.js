@@ -14,11 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const users_model_1 = __importDefault(require("../models/users.model"));
-const promises_1 = require("fs/promises");
 const cloudinary_1 = require("../helper/cloudinary");
 const cloudinary_2 = __importDefault(require("../config/cloudinary"));
 const updateAvatar = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     const userId = req.user._id;
     // remove avatar is user have avatar before
     if (!!req.user.avatar) {
@@ -26,10 +24,10 @@ const updateAvatar = (0, express_async_handler_1.default)((req, res) => __awaite
         yield cloudinary_2.default.api.delete_resources(publicId);
     }
     // get path from request then upload using custom function the get newPath from cloudinary
-    const path = (_a = req.file) === null || _a === void 0 ? void 0 : _a.path;
+    // @ts-ignore
+    let image = req === null || req === void 0 ? void 0 : req.files.avatar;
+    const path = image.tempFilePath;
     const newPath = yield (0, cloudinary_1.uploader)(path, "avatar");
-    // Remove from this server after uploaded on cloudinary
-    yield (0, promises_1.unlink)(path);
     yield users_model_1.default.findByIdAndUpdate(userId, { avatar: newPath.secure_url });
     res.json({ message: "Avatar Updated Successfully" });
 }));

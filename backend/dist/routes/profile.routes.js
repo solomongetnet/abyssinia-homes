@@ -6,9 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const auth_middleware_1 = require("../middleware/auth.middleware");
 const profile_controller_1 = __importDefault(require("../controller/profile.controller"));
-const multer_middleware_1 = require("../middleware/multer.middleware");
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const router = (0, express_1.Router)();
-router.put("/avatar", auth_middleware_1.authenticateToken, multer_middleware_1.upload.single("avatar"), profile_controller_1.default.updateAvatar);
+router.use((0, express_fileupload_1.default)({
+    useTempFiles: true,
+    tempFileDir: "/tmp/", // Use in-memory storage
+}));
+router.put("/avatar", auth_middleware_1.authenticateToken, profile_controller_1.default.updateAvatar);
 router.delete("/avatar", auth_middleware_1.authenticateToken, profile_controller_1.default.removeAvatar);
 router.put("/information", auth_middleware_1.authenticateToken, profile_controller_1.default.updateInformation);
 router.put("/email", auth_middleware_1.authenticateToken, profile_controller_1.default.updateEmail);
