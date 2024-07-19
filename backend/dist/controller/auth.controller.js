@@ -85,7 +85,7 @@ const login = (0, express_async_handler_1.default)((req, res) => __awaiter(void 
         httpOnly: true,
         path: "/",
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "none", //lax in dev and none in production
         maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
     })
         .json({ token: accessToken, message: "Login Successfully" });
