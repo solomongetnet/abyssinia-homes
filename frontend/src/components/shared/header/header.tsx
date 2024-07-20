@@ -19,7 +19,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
   return (
     <header
       className={twMerge(
-        `bg-muted px-[25px] lg:px-[80px] w-full h-[80px] flex justify-between items-center z-40  ${className}`
+        `bg-accent px-[25px] lg:px-[80px] w-full h-[80px] flex justify-between items-center z-40  ${className}`
       )}
     >
       <CustomNavigate to="/">
