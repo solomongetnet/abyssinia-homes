@@ -18,6 +18,7 @@ interface IProps {
   prevStep: () => void;
 }
 
+// After successfull of created new post show confetti
 const frame = () => {
   const duration = 4 * 1000;
   const animationEnd = Date.now() + duration;

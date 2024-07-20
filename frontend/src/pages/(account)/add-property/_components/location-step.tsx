@@ -16,7 +16,17 @@ interface IProps {
 
 const LocationStep: FC<IProps> = ({ nextStep, prevStep }) => {
   const {
-    location: { country, street, address, zipCode, city, map,  },
+    location: {
+      country,
+      street,
+      address,
+      zipCode,
+      city,
+      map,
+      neighborhood,
+      region,
+      subcity,
+    },
   } = useAppSelector((state) => state.property.propertyForm);
   const dispatch = useAppDispatch();
 
@@ -34,6 +44,9 @@ const LocationStep: FC<IProps> = ({ nextStep, prevStep }) => {
         address,
         zipCode,
         city,
+        neighborhood,
+        region,
+        subcity,
       },
     },
     resolver: yupResolver(locationValidatorSchema),
@@ -95,7 +108,7 @@ const LocationStep: FC<IProps> = ({ nextStep, prevStep }) => {
                 className="bg-muted w-full h-[40px] px-2 outline-none cursor-pointer border"
               >
                 <option value="">Enter City</option>
-                <option value="addiss_ababa">Addiss Ababa</option>
+                <option value="addiss ababa">Addiss Ababa</option>
               </select>
             </div>
             <ErrorMessage error={errors.location?.city?.message} />
@@ -118,7 +131,7 @@ const LocationStep: FC<IProps> = ({ nextStep, prevStep }) => {
             <Input
               {...register("location.street")}
               className="py-6 bg-muted"
-              placeholder="Street Here"
+              placeholder="Main street ..."
             />
             <ErrorMessage error={errors.location?.street?.message} />
           </div>
@@ -135,23 +148,36 @@ const LocationStep: FC<IProps> = ({ nextStep, prevStep }) => {
           </div>
 
           <div className="w-full flex-col gap-2">
-            <Label>Subcities</Label>
+            <Label>Subcity</Label>
             <Input
+              {...register("location.subcity")}
               type="text"
               className="py-6 bg-muted"
               placeholder="Bole, Yeka, Arada"
             />
-            <ErrorMessage error={errors.location?.zipCode?.message} />
+            <ErrorMessage error={errors.location?.subcity?.message} />
           </div>
 
           <div className="w-full flex-col gap-2">
             <Label>Neighborhood / ሰፈር</Label>
             <Input
+              {...register("location.neighborhood")}
               type="text"
               className="py-6 bg-muted"
-              placeholder="4kilo, Kotebe"
+              placeholder="4kilo, Kotebe, abado ..."
             />
-            <ErrorMessage error={errors.location?.zipCode?.message} />
+            <ErrorMessage error={errors.location?.neighborhood?.message} />
+          </div>
+
+          <div className="w-full flex-col gap-2">
+            <Label>Region</Label>
+            <Input
+              {...register("location.region")}
+              type="text"
+              className="py-6 bg-muted"
+              placeholder="Amhara, tigray, oromiya, ..."
+            />
+            <ErrorMessage error={errors.location?.region?.message} />
           </div>
         </div>
 

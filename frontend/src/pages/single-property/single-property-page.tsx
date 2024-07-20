@@ -11,6 +11,7 @@ import Amenities from "./_components/amenities";
 import { useGetSinglePropertyQuery } from "@/api/services/property.service";
 import Loader from "@/components/ui/loader";
 import VideoSection from "./_components/video";
+import { isValidUrl } from "@/utils/url";
 
 const SinglePropertyPage: any = () => {
   const navigate = useNavigate();
@@ -75,9 +76,8 @@ const SinglePropertyPage: any = () => {
             {/* Location */}
             <Location location={data.location} />
             {/* Video */}
-            {/* <VideoSection videoUrl="https://youtu.be/xgZd_vFNkUs?si=9HCxD4v6PcUWrom8" /> */}
-            {data?.videoUrl && (
-              <VideoSection videoUrl="https://www.youtube.com/embed/xgZd_vFNkUs?si=fxttAvXgx-_-ueex" />
+            {data?.videoUrl && isValidUrl(data.videoUrl) && (
+              <VideoSection videoUrl={data.videoUrl} />
             )}
 
             {/* Features & Amenities */}

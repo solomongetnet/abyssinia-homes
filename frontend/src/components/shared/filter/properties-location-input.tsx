@@ -1,4 +1,4 @@
-import { FC, } from "react";
+import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { Input } from "@/components/ui/input";
 
@@ -21,7 +21,7 @@ const LocationInput: FC<IProps> = ({
         return { ...prev, location: e.target.value.split(" ").join() };
       });
   };
-  
+
   return (
     <div className={twMerge(`h-full w-fit ${containerClassName}`)}>
       <Input

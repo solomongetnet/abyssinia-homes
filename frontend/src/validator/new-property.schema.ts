@@ -10,9 +10,11 @@ export const basicValidatorSchema = yup.object({
       .nullable()
       .typeError("Invaild Price")
       .required("Price is required"),
+    period: yup.string(),
   }),
   propertyType: yup.string().required("Property type is required"),
   propertyStatus: yup.string().required("Property status is required"),
+  company: yup.string(),
 });
 
 export const locationValidatorSchema = yup.object({
@@ -21,6 +23,9 @@ export const locationValidatorSchema = yup.object({
     address: yup.string().required("Address Is Required"),
     city: yup.string().required("City Is Required"),
     street: yup.string(),
+    subcity: yup.string(),
+    neighborhood: yup.string(),
+    region: yup.string(),
     zipCode: yup.mixed().notRequired(),
     longitude: yup.number().nullable(),
     latitude: yup.number().nullable(),

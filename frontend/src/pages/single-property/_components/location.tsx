@@ -12,24 +12,48 @@ const Location: FC<IProps> = ({ location }) => {
       <div className="w-full flex flex-col gap-6">
         <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4">
           <div className="flex items-center gap-3">
-            <h2 className="text-sm sm:text-md text-[800]">City</h2>
+            <h2 className="text-sm sm:text-md text-[800]">City:</h2>
             <span>{location?.city || "_"}</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <h2 className="text-sm sm:text-md text-[800]">Address</h2>
+            <h2 className="text-sm sm:text-md text-[800]">Address:</h2>
             <span>{location.address || "_"}</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <h2 className="text-sm sm:text-md text-[800]">Country</h2>
+            <h2 className="text-sm sm:text-md text-[800]">Country:</h2>
             <span>{location.country || "_"}</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <h2 className="text-sm sm:text-md text-[800]">Street</h2>
+            <h2 className="text-sm sm:text-md text-[800]">Street:</h2>
             <span>{location.street || "_"}</span>
           </div>
+          {location.neighborhood && (
+            <div className="flex items-center gap-3">
+              <h2 className="text-sm sm:text-md text-[800]">Neighborhood:</h2>
+              <span>{location.neighborhood}</span>
+            </div>
+          )}
+          {location.region && (
+            <div className="flex items-center gap-3">
+              <h2 className="text-sm sm:text-md text-[800]">Region:</h2>
+              <span>{location.region}</span>
+            </div>
+          )}
+          {location.subcity && (
+            <div className="flex items-center gap-3">
+              <h2 className="text-sm sm:text-md text-[800]">Subcity:</h2>
+              <span>{location.subcity}</span>
+            </div>
+          )}
+          {location.zipCode && (
+            <div className="flex items-center gap-3">
+              <h2 className="text-sm sm:text-md text-[800]">Zip Code:</h2>
+              <span>{location.zipCode}</span>
+            </div>
+          )}
         </div>
         <div className="w-full h-[300px] rounded-lg overflow-hidden">
           <iframe

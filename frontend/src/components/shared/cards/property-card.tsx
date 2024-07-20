@@ -138,7 +138,9 @@ const PropertyCard: FC<ICardProps> = ({
               {data.price?.amount} {data.price?.currency}
             </h2>
             {data.propertyStatus === "for rent" && (
-              <span className="text-muted-foreground text-sm"> /per month</span>
+              <span className="text-muted-foreground text-sm">
+                /{data.price?.period || "month"}
+              </span>
             )}
           </div>
           <Button variant={"outline"} onClick={handleViewClick}>

@@ -24,12 +24,12 @@ const getProperties = asyncHandler(
       propertyType,
       minPrice,
       maxPrice,
-      city,
       amenities,
       bedRooms,
       bathRooms,
       minSize,
       maxSize,
+      location,
     } = req.query;
 
     // Build the query object
@@ -50,7 +50,22 @@ const getProperties = asyncHandler(
       if (maxSize) query.size.$lte = Number(maxSize);
     }
 
-    if (city) query["location.city"] = city;
+    let splitedLocation: any[] = location?.split(",") || [];
+    if (splitedLocation && splitedLocation.length > 0) {
+      query["$or"] = splitedLocation.map((loc) => ({
+        $or: [
+          { "location.city": { $regex: loc, $options: "i" } },
+          { "location.country": { $regex: loc, $options: "i" } },
+          { "location.subcity": { $regex: loc, $options: "i" } },
+          { "location.zone": { $regex: loc, $options: "i" } },
+          { "location.region": { $regex: loc, $options: "i" } },
+          { "location.address": { $regex: loc, $options: "i" } },
+          { "location.street": { $regex: loc, $options: "i" } },
+          { "location.neighborhood": { $regex: loc, $options: "i" } },
+        ],
+      }));
+    }
+
     if (amenities) query.amenities = { $all: amenities.split(",") };
     if (bedRooms) query.bedRooms = Number(bedRooms);
     if (bathRooms) query.bathRooms = Number(bathRooms);

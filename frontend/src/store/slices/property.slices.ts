@@ -10,7 +10,9 @@ interface IPropertyForm {
   price?: {
     amount?: number | null;
     currency?: string;
+    period: string;
   };
+  company?: string;
   size?: number | null;
   roomsSize?: number | null;
   bedRooms?: number | null;
@@ -25,6 +27,9 @@ interface IPropertyForm {
     street: string;
     city: string;
     zipCode: number | null;
+    neighborhood: string;
+    region: string;
+    subcity: string;
     map?: {
       longitude: number;
       latitude: number;
@@ -43,7 +48,9 @@ const initialState: { propertyForm: IPropertyForm } = {
     price: {
       amount: null,
       currency: "",
+      period: "",
     },
+    company: "",
     size: null,
     bedRooms: null,
     bathRooms: null,
@@ -57,6 +64,9 @@ const initialState: { propertyForm: IPropertyForm } = {
       city: "",
       street: "",
       zipCode: null,
+      neighborhood: "",
+      region: "",
+      subcity: "",
       map: {
         longitude: 0,
         latitude: 0,

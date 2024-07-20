@@ -63,7 +63,9 @@ const Header = ({ data }: { data: IProperty }) => {
 
         <div>
           <h2 className="text-2xl font-extrabold">
-            {data.price?.amount} {data.price?.currency}
+            {data.price?.amount} {data.price?.currency}{" "}
+            {(data.propertyStatus === "for rent" && "/" + data.price?.period) ||
+              "month"}
           </h2>
         </div>
       </div>

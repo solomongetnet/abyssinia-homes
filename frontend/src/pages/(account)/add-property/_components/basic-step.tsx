@@ -24,12 +24,14 @@ const BasicStep: FC<IProps> = ({ nextStep }) => {
     description,
     propertyStatus,
     propertyType,
-    price: { currency, amount },
+    price: { currency, amount, period },
+    company,
   } = useAppSelector((state) => state.property.propertyForm);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     values: {
       title,
@@ -37,13 +39,16 @@ const BasicStep: FC<IProps> = ({ nextStep }) => {
       price: {
         currency,
         amount,
+        period,
       },
       propertyType,
       propertyStatus,
+      company,
     },
     resolver: yupResolver(basicValidatorSchema),
   });
   const dispatch = useAppDispatch();
+  const propertyStatusWatch = watch("propertyStatus");
 
   const onSubmit = (data: any) => {
     dispatch(updatePropertyForm({ ...data }));
@@ -84,7 +89,7 @@ const BasicStep: FC<IProps> = ({ nextStep }) => {
           <ErrorMessage error={errors.description?.message} />
         </div>
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="w-full flex flex-col gap-2">
             <Label>Property Type</Label>
             <select
@@ -116,6 +121,16 @@ const BasicStep: FC<IProps> = ({ nextStep }) => {
             </select>
             <ErrorMessage error={errors?.propertyStatus?.message} />
           </div>
+
+          <div className="w-full flex  flex-col gap-2">
+            <Label>Compnay</Label>
+            <Input
+              {...register("company")}
+              className="py-6 bg-muted"
+              placeholder="Ayat, ovid, sunshine, noah ..."
+            />
+            <ErrorMessage error={errors?.company?.message} />
+          </div>
         </div>
 
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -145,6 +160,27 @@ const BasicStep: FC<IProps> = ({ nextStep }) => {
             </select>
             <ErrorMessage error={errors.price?.currency?.message} />
           </div>
+
+          {propertyStatusWatch === "for rent" && (
+            <div className="w-full flex flex-col gap-2">
+              <Label>Rent period</Label>
+              <select
+                {...register("price.period")}
+                className="bg-muted w-full h-[40px] px-2 outline-none cursor-pointer border"
+                defaultValue={""}
+              >
+                <option value="" defaultChecked={true}>
+                  Select rent period
+                </option>
+                <option value="monthly" defaultChecked={true}>
+                  Monthly
+                </option>
+                <option value="quarterly">Quarterly</option>
+                <option value="yearly">Yearly</option>
+              </select>
+              <ErrorMessage error={errors.price?.period?.message} />
+            </div>
+          )}
         </div>
 
         <button hidden>Submit</button>

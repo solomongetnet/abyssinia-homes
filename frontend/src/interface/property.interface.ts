@@ -9,6 +9,7 @@ export interface IProperty {
   price?: {
     amount?: number;
     currency?: string;
+    period?: string;
   };
   size: number;
   bedRooms?: number;
@@ -21,26 +22,33 @@ export interface IProperty {
   videoUrl?: string;
   amenities: string[];
   location: {
+    map?: {
+      longitude: 0;
+      latitude: 0;
+    };
     address?: string;
     country?: string;
     city?: string;
     street?: string;
+    subcity?: string;
+    neighborhood?: string;
+    region?: string;
     zipCode?: number;
-    map: {
-      longitude: 0;
-      latitude: 0;
-    };
   };
   distance?: any;
+  company?: string;
   createdAt?: number;
   updatedAt?: number;
 }
 
 export interface IPropertyLocation {
-  coordinates?: number[];
+  map?: any;
   address?: string;
   country?: string;
   city?: string;
   street?: string;
   zipCode?: number;
+  subcity?: string;
+  neighborhood?: string;
+  region?: string;
 }

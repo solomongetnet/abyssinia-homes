@@ -16,6 +16,7 @@ const PropertySchema: Schema = new Schema<IProperty>(
     price: {
       currency: { type: String, required: true },
       amount: { type: Number, required: true },
+      period: { type: String },
     },
     builtYear: {
       type: Number,
@@ -34,6 +35,9 @@ const PropertySchema: Schema = new Schema<IProperty>(
         "realState",
       ],
       required: true,
+    },
+    company: {
+      type: String,
     },
     propertyStatus: {
       type: String,
@@ -57,13 +61,15 @@ const PropertySchema: Schema = new Schema<IProperty>(
         longitude: Number,
         latitude: Number,
       },
-      address: { type: String },
       country: { type: String },
+      address: { type: String },
       city: { type: String },
       street: { type: String },
+      subcity: { type: String },
+      neighborhood: { type: String },
+      region: { type: String },
       zipCode: { type: Number },
     },
-
     size: { type: Number, required: true },
   },
   {
@@ -74,3 +80,20 @@ const PropertySchema: Schema = new Schema<IProperty>(
 // Create and export the Property model
 const PropertyModel = model<IProperty>("Property", PropertySchema);
 export default PropertyModel;
+
+{
+  /*
+        
+         map: {
+      longitude: 0;
+      latitude: 0;
+    };
+    address: string;
+    country: string;
+    city: string;
+    street?: string;
+    subcity?: string;
+    neighborhood?: string;
+    region?: string;
+    zipCode?: number;*/
+}

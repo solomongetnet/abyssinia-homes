@@ -17,7 +17,7 @@ const PropertiesContainer = ({
 
   const { data, isLoading, isFetching, isError } = useGetPropertiesQuery({
     page,
-    limit: 6,
+    limit: 12,
     filtersQuery: filters,
   });
 

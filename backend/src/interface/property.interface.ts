@@ -8,8 +8,9 @@ export interface IProperty {
   propertyStatus: string;
   propertyType: string;
   price?: {
-    amount?: number;
-    currency?: string;
+    amount: number;
+    currency: string;
+    period?: string;
   };
   size: number;
   bedRooms?: number;
@@ -30,12 +31,17 @@ export interface IProperty {
     country: string;
     city: string;
     street?: string;
+    subcity?: string;
+    neighborhood?: string;
+    region?: string;
     zipCode?: number;
   };
+  company?: string;
 }
 
 // Query Interface
 export interface IPropertyQuery {
+  location?: string;
   propertyStatus?: string;
   propertyType?: string;
   minPrice?: string;
