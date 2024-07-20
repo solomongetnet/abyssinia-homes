@@ -15,6 +15,7 @@ const PropertySchema = new mongoose_1.Schema({
     price: {
         currency: { type: String, required: true },
         amount: { type: Number, required: true },
+        period: { type: String },
     },
     builtYear: {
         type: Number,
@@ -33,6 +34,9 @@ const PropertySchema = new mongoose_1.Schema({
             "realState",
         ],
         required: true,
+    },
+    company: {
+        type: String,
     },
     propertyStatus: {
         type: String,
@@ -56,10 +60,13 @@ const PropertySchema = new mongoose_1.Schema({
             longitude: Number,
             latitude: Number,
         },
-        address: { type: String },
         country: { type: String },
+        address: { type: String },
         city: { type: String },
         street: { type: String },
+        subcity: { type: String },
+        neighborhood: { type: String },
+        region: { type: String },
         zipCode: { type: Number },
     },
     size: { type: Number, required: true },
@@ -69,3 +76,19 @@ const PropertySchema = new mongoose_1.Schema({
 // Create and export the Property model
 const PropertyModel = (0, mongoose_1.model)("Property", PropertySchema);
 exports.default = PropertyModel;
+{
+    /*
+          
+           map: {
+        longitude: 0;
+        latitude: 0;
+      };
+      address: string;
+      country: string;
+      city: string;
+      street?: string;
+      subcity?: string;
+      neighborhood?: string;
+      region?: string;
+      zipCode?: number;*/
+}

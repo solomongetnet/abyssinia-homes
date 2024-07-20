@@ -23,7 +23,7 @@ const geolib = require("geolib");
 const getProperties = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 10;
-    const { propertyStatus, propertyType, minPrice, maxPrice, city, amenities, bedRooms, bathRooms, minSize, maxSize, } = req.query;
+    const { propertyStatus, propertyType, minPrice, maxPrice, amenities, bedRooms, bathRooms, minSize, maxSize, location, } = req.query;
     // Build the query object
     let query = {};
     if (propertyStatus)
@@ -44,8 +44,21 @@ const getProperties = (0, express_async_handler_1.default)((req, res) => __await
         if (maxSize)
             query.size.$lte = Number(maxSize);
     }
-    if (city)
-        query["location.city"] = city;
+    let splitedLocation = (location === null || location === void 0 ? void 0 : location.split(",")) || [];
+    if (splitedLocation && splitedLocation.length > 0) {
+        query["$or"] = splitedLocation.map((loc) => ({
+            $or: [
+                { "location.city": { $regex: loc, $options: "i" } },
+                { "location.country": { $regex: loc, $options: "i" } },
+                { "location.subcity": { $regex: loc, $options: "i" } },
+                { "location.zone": { $regex: loc, $options: "i" } },
+                { "location.region": { $regex: loc, $options: "i" } },
+                { "location.address": { $regex: loc, $options: "i" } },
+                { "location.street": { $regex: loc, $options: "i" } },
+                { "location.neighborhood": { $regex: loc, $options: "i" } },
+            ],
+        }));
+    }
     if (amenities)
         query.amenities = { $all: amenities.split(",") };
     if (bedRooms)
