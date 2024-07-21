@@ -32,12 +32,13 @@ const baseQueryWithReauth: ReturnType<typeof fetchBaseQuery> = async (
       extraOptions
     );
 
-    if (refreshResult.data) {
-      const { token } = refreshResult.data as { token: string };
-      api.dispatch(setToken(token));
-      result = await baseQuery(args, api, extraOptions);
-    } else {
+    // Remove accesstoken if there is an error after trying to get new accessToken from refresh token
+    if (refreshResult.error?.status === 401) {
       api.dispatch(clearToken());
+    } else {
+      const { token: newAccessToken } = refreshResult.data as { token: string };
+      api.dispatch(setToken(newAccessToken));
+      result = await baseQuery(args, api, extraOptions);
     }
   }
   return result;

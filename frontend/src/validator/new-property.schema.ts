@@ -1,8 +1,14 @@
 import * as yup from "yup";
 
 export const basicValidatorSchema = yup.object({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
+  title: yup
+    .string()
+    .required("Title is required")
+    .max(100, "You can't add over 100 characters"),
+  description: yup
+    .string()
+    .required("Description is required")
+    .max(500, "You can't add over 500 characters"),
   price: yup.object().shape({
     currency: yup.string().required("Price Currency is required"),
     amount: yup

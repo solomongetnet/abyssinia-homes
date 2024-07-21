@@ -1,16 +1,14 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-const CustomNavigate = ({
-  children,
-  to,
-  className,
-}: {
+interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   to: any;
   className?: string;
-}) => {
+}
+
+const CustomNavigate = ({ children, to, className, ...props }: IProps) => {
   const navigate = useNavigate();
 
   const handleNavigate: () => void = () => {
@@ -18,6 +16,7 @@ const CustomNavigate = ({
   };
   return (
     <div
+      {...props}
       className={twMerge(`cursor-pointer ${className}`)}
       onClick={handleNavigate}
     >

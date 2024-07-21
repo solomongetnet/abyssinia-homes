@@ -29,7 +29,7 @@ const SmallDeviceMenu = () => {
         <Menu />
       </SheetTrigger>
 
-      <SheetContent className="md:hidden">
+      <SheetContent>
         <SheetHeader className="mt-6">
           {isLoggedIn ? (
             <div className="w-full flex flex-col gap-4 items-center justify-center">
@@ -61,7 +61,7 @@ const SmallDeviceMenu = () => {
               <div className="w-full ">
                 <h2 className="font-bold">Welcome</h2>
               </div>
-              <div className="flex-col gap-2">
+              <div className="flex flex-col gap-2">
                 <CustomNavigate className="w-full" to="/auth/login">
                   <Button className="w-full">Login</Button>
                 </CustomNavigate>

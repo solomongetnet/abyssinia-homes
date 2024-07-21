@@ -121,10 +121,10 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
             </DialogDescription>
           </DialogHeader>
 
-          <div className="pt-4 px-2 flex flex-col gap-8 h-[80vh] sm:h-[450px] overflow-y-scroll">
-            <div className="flex flex-col gap-6 w-full">
+          <div className="pt-4 px-2 flex flex-col gap-8 h-[75vh] sm:h-[450px] overflow-y-scroll">
+            <div className="flex flex-col gap-6 w-full pb-5">
               <div className="flex flex-col gap-2">
-                <DialogTitle className="text-md">Properties Status</DialogTitle>
+                <DialogTitle className="text-sm">Properties Status</DialogTitle>
                 <PropertyStatusSelector
                   setNewValue={setFilterValues}
                   className="w-fit dark:text-white"
@@ -132,15 +132,15 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
               </div>
 
               <div className="flex flex-col gap-2">
-                <DialogTitle className="text-md">Properties Type</DialogTitle>
+                <DialogTitle className="text-sm">Properties Type</DialogTitle>
                 <PropertiesTypeSelector
                   setNewValue={setFilterValues}
-                  className="w-fit dark:text-white"
+                  className="w-full dark:text-white"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <DialogTitle className="text-md">
+                <DialogTitle className="text-sm">
                   Properties Location
                 </DialogTitle>
                 <Input
@@ -152,12 +152,12 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
               </div>
 
               <div className="flex flex-col gap-2">
-                <DialogTitle className="text-md">Properties Size</DialogTitle>
+                <DialogTitle className="text-sm">Properties Size</DialogTitle>
                 <SizeRangeSlider setNewValue={setFilterValues} />
               </div>
 
               <div className="flex flex-col gap-2">
-                <DialogTitle className="text-md">Bedrooms</DialogTitle>
+                <DialogTitle className="text-sm">Bedrooms</DialogTitle>
                 <Input
                   type="number"
                   placeholder="2"
@@ -167,7 +167,7 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
               </div>
 
               <div className="flex flex-col gap-2">
-                <DialogTitle className="text-md">Bathrooms</DialogTitle>
+                <DialogTitle className="text-sm">Bathrooms</DialogTitle>
                 <Input
                   type="number"
                   placeholder="2"
@@ -177,7 +177,7 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
               </div>
 
               <div className="flex flex-col gap-2">
-                <DialogTitle className="text-md">Properties Price</DialogTitle>
+                <DialogTitle className="text-sm">Properties Price</DialogTitle>
                 <PriceRangeSlider setNewValue={setFilterValues} />
               </div>
 
@@ -185,9 +185,9 @@ const AdvanceSearchModal: FC<{ triggerClassname?: string }> = ({
                 <DialogTitle className="text-md">
                   Properties Amenties
                 </DialogTitle>
-                <ul className="w-full flex flex-wrap gap-x-6 gap-y-3 sm:grid sm:grid-cols-3 sm:gap-3 ">
+                <ul className="w-full grid grid-cols-2 sm:grid-cols-3 gap-3 ">
                   {AmenitiesData.map((a, idx) => (
-                    <li className="flex  sm:items-center gap-1" key={a + idx + Math.random() * 200}>
+                    <li className="flex sm:items-center gap-1" key={a + idx + Math.random() * 200}>
                       <input
                         checked={selectedAmenities.includes(a)}
                         type="checkbox"

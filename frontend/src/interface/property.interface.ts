@@ -6,9 +6,9 @@ export interface IProperty {
   description: string;
   propertyStatus: string;
   propertyType: string;
-  price?: {
-    amount?: number;
-    currency?: string;
+  price: {
+    amount: number;
+    currency: string;
     period?: string;
   };
   size: number;

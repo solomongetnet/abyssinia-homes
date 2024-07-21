@@ -95,11 +95,11 @@ const refreshToken = (0, express_async_handler_1.default)((req, res) => __awaite
     const _refreshToken = req.cookies.refreshToken;
     if (!_refreshToken) {
         res.status(401);
-        return;
+        throw new Error("Please login");
     }
     // Decoded the resfresh token to get result
     const decoded = jsonwebtoken_1.default.verify(_refreshToken, process.env.REFRESH_TOKEN_SECRET);
-    const userDoc = yield users_model_1.default.findById(decoded === null || decoded === void 0 ? void 0 : decoded.userId).select('role');
+    const userDoc = yield users_model_1.default.findById(decoded === null || decoded === void 0 ? void 0 : decoded.userId).select("role");
     if (!userDoc) {
         res.status(401);
         throw new Error("Can't find this account");

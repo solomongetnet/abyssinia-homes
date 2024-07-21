@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { IProperty } from "@/interface/property.interface";
 import FavoriteBtn from "../buttons/favorite-btn";
 import CustomNavigate from "@/utils/navigate";
+import { PriceConverter } from "@/utils/price-convertor";
 
 interface ICardProps {
   data: IProperty;
@@ -54,7 +55,7 @@ const PropertyCard: FC<ICardProps> = ({
               <div className=" capitalize shadow-xl bg-black/50 text-primary backdrop-blur-2xl text-sm font-bold px-2 py-1 rounded-sm">
                 {data.propertyStatus}
               </div>
-              <div className="shadow-xl bg-black/50 text-primary backdrop-blur-2xl text-sm font-bold px-2 py-1 rounded-sm">
+              <div className="shadow-xl bg-black/50 text-primary backdrop-blur-2xl text-sm font-bold capitalize px-2 py-1 rounded-sm">
                 {data.propertyType}
               </div>
             </div>
@@ -95,7 +96,11 @@ const PropertyCard: FC<ICardProps> = ({
               {", "}
               {data.location?.city}
               {", "}
+              {data.location?.neighborhood}
+              {", "}
               {data.location?.street}
+              {", "}
+              {data.location?.region}
             </span>
           </div>
         </div>
@@ -105,7 +110,7 @@ const PropertyCard: FC<ICardProps> = ({
             <div className="capitalize text-xs shadow bg-primary/10 text-primary backdrop-blur-2xl font-bold px-2 py-1 rounded-sm">
               {data.propertyStatus}
             </div>
-            <div className="shadow-xl bg-primary/10 text-primary backdrop-blur-2xl text-xs font-bold px-2 py-1 rounded-sm">
+            <div className="shadow-xl bg-primary/10 text-primary backdrop-blur-2xl text-xs font-bold capitalize px-2 py-1 rounded-sm">
               {data.propertyType}
             </div>
           </div>
@@ -135,13 +140,13 @@ const PropertyCard: FC<ICardProps> = ({
         <div className="py-4 flex justify-between items-center">
           <div className="flex items-end">
             <h2 className="font-[700]">
-              {data.price?.amount} {data.price?.currency}
+              {PriceConverter(
+                data.price.amount,
+                data.price.currency,
+                data.price.period,
+                data.propertyStatus
+              )}
             </h2>
-            {data.propertyStatus === "for rent" && (
-              <span className="text-muted-foreground text-sm">
-                /{data.price?.period || "month"}
-              </span>
-            )}
           </div>
           <Button variant={"outline"} onClick={handleViewClick}>
             View Detail

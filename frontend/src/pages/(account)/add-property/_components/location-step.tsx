@@ -206,15 +206,8 @@ const LocationStep: FC<IProps> = ({ nextStep, prevStep }) => {
             </div>
           </div>
           <div className="w-full h-[240px] rounded-lg overflow-hidden">
-            {/* <iframe
-              src="https://www.google.com/maps/embed/v1/place?q=9.041343528505585,38.8315310564456"
-              // src="https://www.google.com/maps/place/9.041343528505585,38.8315310564456"
-              height="450"
-              loading="lazy"
-            ></iframe> */}
             <iframe
               src="https://www.google.com/maps/@9.0411925,38.8314627,21z?entry=ttu"
-              // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15761.424821467193!2d38.82143284513998!3d9.031234106481438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b900f68a5e9d7%3A0x5abf2170fe2bd3f4!2zS290ZWJlLCDhiqDhi7LhiLUg4Yqg4Ymg4Ymj!5e0!3m2!1sam!2set!4v1718056450409!5m2!1sam!2set"
               loading="lazy"
               className="border-0 size-full"
             ></iframe>
@@ -222,7 +215,7 @@ const LocationStep: FC<IProps> = ({ nextStep, prevStep }) => {
         </div>
       </form>
 
-      <footer className="w-full flex max-md:flex-col md:justify-between">
+      <footer className="w-full flex max-md:flex-col md:justify-between gap-2">
         <Button
           onClick={handlePrevBtn}
           variant={"outline"}

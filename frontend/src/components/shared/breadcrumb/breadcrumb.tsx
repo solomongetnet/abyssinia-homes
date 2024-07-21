@@ -33,7 +33,9 @@ const BreadcrumbM = () => {
                 <>
                   {pathnames.length === 2 && <BreadcrumbSeparator />}
                   <BreadcrumbItem>
-                    <BreadcrumbPage>{value}</BreadcrumbPage>
+                    <BreadcrumbPage>
+                      {value.length > 10 ? value.slice(0, 10) + "..." : value}
+                    </BreadcrumbPage>
                   </BreadcrumbItem>
                 </>
               ) : (

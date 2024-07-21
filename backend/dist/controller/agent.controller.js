@@ -69,13 +69,23 @@ const getRecentAgents = (0, express_async_handler_1.default)((req, res) => __awa
     const limit = Number(req.query.limit) || 5;
     const recentAgents = yield users_model_1.default.find({ role: "agent" })
         .sort({ createdAt: -1 })
-        .limit(limit).select('fullName avatar email username properties ');
+        .limit(limit)
+        .select("fullName avatar email username properties ");
     res.json(recentAgents);
+}));
+const getFeatureAgents = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const limit = Number(req.query.limit) || 8;
+    const featureAgents = yield users_model_1.default.find({ role: "agent" })
+        .sort({ createdAt: -1 })
+        .limit(limit)
+        .select("fullName avatar email username properties");
+    res.json(featureAgents);
 }));
 const agentController = {
     getAgents,
     getSingleAgent,
     getAgentProperties,
     getRecentAgents,
+    getFeatureAgents,
 };
 exports.default = agentController;

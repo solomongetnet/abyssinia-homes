@@ -7,6 +7,7 @@ import Breadcrumb from "@/components/shared/breadcrumb/breadcrumb";
 import { IProperty } from "@/interface/property.interface";
 import { format } from "date-fns";
 import FavoriteBtn from "@/components/shared/buttons/favorite-btn";
+import { PriceConverter } from "@/utils/price-convertor";
 
 const Header = ({ data }: { data: IProperty }) => {
   const handlePrint = () => {
@@ -63,9 +64,12 @@ const Header = ({ data }: { data: IProperty }) => {
 
         <div>
           <h2 className="text-2xl font-extrabold">
-            {data.price?.amount} {data.price?.currency}{" "}
-            {(data.propertyStatus === "for rent" && "/" + data.price?.period) ||
-              "month"}
+            {PriceConverter(
+              data.price.amount,
+              data.price.currency,
+              data.price.period,
+              data.propertyStatus,
+            )}
           </h2>
         </div>
       </div>

@@ -37,7 +37,7 @@ const SearchBarHeader = () => {
     <header
       className={`md:sticky max-md:p-[15px] top-[80px] z-40 w-full md:h-[80px]`}
     >
-      <div className="shadow-lg bg-accent">
+      <div className="shadow-lg bg-accent max-md:rounded-xl">
         <div className="flex items-center justify-center ">
           <div className="flex items-center justify-center max-md:flex-col gap-6 max-md:py-[20px] px-[15px] max-md:w-full md:w-fit h-fit md:h-[65px] ">
             {/* Left */}

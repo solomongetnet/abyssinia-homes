@@ -19,15 +19,11 @@ const Header: FC<HeaderProps> = ({ className }) => {
   return (
     <header
       className={twMerge(
-        `px-[25px] lg:px-[80px] w-full h-[80px] flex justify-between items-center z-40  bg-background ${className}`
+        `bg-muted px-[25px] lg:px-[80px] w-full h-[80px] flex justify-between items-center z-40  ${className}`
       )}
     >
       <CustomNavigate to="/">
-        <LogoCard className="w-[60px] sm:w-[75px]"/>
-        {/* <div className="text-2xl flex items-center gap-2">
-          <HomeIcon />
-          Abisinya
-        </div> */}
+        <LogoCard className="w-[60px] sm:w-[75px]" />
       </CustomNavigate>
 
       {/* Nav Links */}
@@ -35,7 +31,7 @@ const Header: FC<HeaderProps> = ({ className }) => {
 
       {/* Right Content */}
       <div className="flex items-center gap-4">
-        <div className="max-md:hidden">
+        <div>
           <ModeToggle />
         </div>
         {isLoggedIn ? <ProtectedActions /> : <PublicActions />}

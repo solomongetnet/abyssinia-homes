@@ -36,7 +36,7 @@ const Profile = () => {
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger>
-        <div className="w-fit md:mr-4 flex items-center gap-2 cursor-pointer bg">
+        <div className="md:w-[150px] overflow-hidden md:mr-4 flex items-center gap-2 cursor-pointer bg">
           <Avatar>
             <AvatarImage src={user?.avatar} />
             <AvatarFallback className="uppercase">
@@ -46,7 +46,9 @@ const Profile = () => {
 
           <div className="max-md:hidden flex flex-col items-start text-start">
             <h2 className="text-sm font-[700] line-clamp-1">
-              {user?.fullName}
+              {user?.fullName && user?.fullName?.length > 10
+                ? user?.fullName?.slice(0, 10) + "..."
+                : user?.fullName}
             </h2>
             <p className="text-xs">{user?.role}</p>
           </div>

@@ -71,12 +71,14 @@ const ImageContainer: FC<IProps> = ({ images }) => {
       </div>
 
       <div className="w-full flex justify-center">
-        <div
-          onClick={() => openModal(0)}
-          className={`flex gap-1 text-sm items-center px-3 py-2 border cursor-pointer hover:bg-muted transition rounded-sm`}
-        >
-          View more Images
-        </div>
+        {images.length > 1 && (
+          <div
+            onClick={() => openModal(0)}
+            className={`flex gap-1 text-sm items-center px-3 py-2 border cursor-pointer hover:bg-muted transition rounded-sm`}
+          >
+            View more Images
+          </div>
+        )}
         <Modal
           isOpen={isImagesModalOpen}
           onClose={closeModal}

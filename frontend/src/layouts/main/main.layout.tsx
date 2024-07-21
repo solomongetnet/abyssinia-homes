@@ -1,6 +1,5 @@
 import Footer from "@/components/shared/footer/footer";
 import Header from "@/components/shared/header/header";
-import { ModeToggle } from "@/components/shared/mode-toggle";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
@@ -10,9 +9,7 @@ const MainLayout = () => {
       <div className="min-h-screen pt-[80px]">
         <Outlet />
       </div>
-      <span className="fixed bottom-4 right-4">
-        <ModeToggle />
-      </span>
+      
       <Footer />
     </div>
   );

@@ -4,11 +4,13 @@ export const DetailCard = ({ data }: { data: any }) => {
   return (
     <div className="overflow-hidden px-4 py-4 flex max-md:flex-col gap-4  w-full rounded-md shadow-md border ">
       {/* left */}
-      <div className="h-[250px] w-full md:w-[40%] flex justify-center items-center">
-        <div className="w-full max-md:aspect-video md:h-full rounded-md relative overflow-hidden">
-          <img className="size-full object-cover" src={data?.avatar} />
+      {data.avatar && (
+        <div className="h-[250px] w-full md:w-[40%] flex justify-center items-center">
+          <div className="w-full max-md:aspect-video md:h-full rounded-md relative overflow-hidden">
+            <img className="size-full object-cover" src={data?.avatar} />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* right */}
       <div className="max-md:pt-3 flex-1 flex flex-col gap-2">

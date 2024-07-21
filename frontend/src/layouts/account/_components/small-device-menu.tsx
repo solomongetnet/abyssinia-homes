@@ -17,13 +17,15 @@ const MenuDrawer = () => {
   const { role } = useAuth();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { pathname } = useLocation();
+
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+  
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger>
-        <Menu />
+      <DrawerTrigger className="mx-auto p-2 rounded-full bg-black text-white dark:bg-white dark:text-black">
+        <Menu className="w-8 h-8"/>
       </DrawerTrigger>
       <DrawerContent className="max-h-[95vh]">
         <DrawerHeader></DrawerHeader>

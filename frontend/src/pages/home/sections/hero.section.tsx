@@ -66,11 +66,11 @@ const HeroSection = () => {
             <div className="flex-1 flex items-center ">
               <div className="w-full flex items-center max-md:flex-col gap-4">
                 <PropertiesTypeSelector
-                  className="w-full dark:bg-white dark:text-black border-[#e0e0e0]"
+                  className="w-full bg-white text-black border-[#e0e0e0]"
                   setNewValue={setFilterValues}
                 />
                 <PropertiesLocationInput
-                  className="w-full md:w-[150px] bg-white border-[#e0e0e0]"
+                  className="w-full md:w-[150px] bg-white text-black border-[#e0e0e0]"
                   containerClassName="w-full"
                   setNewValue={setFilterValues}
                 />

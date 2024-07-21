@@ -27,6 +27,9 @@ const PropertiesPage = () => {
                 Find amazing property here, a collection of top and quality
                 properties.
               </p>
+              <span className="md:hidden text-xs text-foreground">
+                {!!totalProperties && `${totalProperties} Properties Found`}
+              </span>{" "}
             </div>
 
             {/* Right Sort */}

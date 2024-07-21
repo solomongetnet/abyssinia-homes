@@ -34,7 +34,7 @@ const PropertiesTypeSelector: FC<IProps> = ({ className, setNewValue }) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between"
+          className={twMerge(`w-full justify-between ${className}`)}
         >
           {value
             ? propertiesTypesList.find((property) => property.type === value)
@@ -47,7 +47,7 @@ const PropertiesTypeSelector: FC<IProps> = ({ className, setNewValue }) => {
         <Command>
           <CommandInput placeholder="Search type..." />
           <CommandList>
-            <CommandEmpty>No Propeties Type found.</CommandEmpty>
+            <CommandEmpty >No Propeties Type found.</CommandEmpty>
             <CommandGroup>
               {propertiesTypesList.map((itm: any) => (
                 <CommandItem

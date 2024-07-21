@@ -5,7 +5,6 @@ export const AmenitiesData: string[] = [
   "Parking",
   "Garage",
   "CCTV",
-  "Elevator",
   "Refrigerator",
   "Shower",
   "Jacuzzi",

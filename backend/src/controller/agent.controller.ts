@@ -1,4 +1,4 @@
-import {  Request, Response } from "express";
+import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import UserModel from "../models/users.model";
 import PropertyModel from "../models/property.model";
@@ -70,14 +70,27 @@ const getRecentAgents = asyncHandler(async (req: _Request, res: Response) => {
 
   const recentAgents = await UserModel.find({ role: "agent" })
     .sort({ createdAt: -1 })
-    .limit(limit).select('fullName avatar email username properties ');
+    .limit(limit)
+    .select("fullName avatar email username properties ");
 
   res.json(recentAgents);
+});
+
+const getFeatureAgents = asyncHandler(async (req: _Request, res: Response) => {
+  const limit: number = Number(req.query.limit) || 8;
+
+  const featureAgents = await UserModel.find({ role: "agent" })
+    .sort({ createdAt: -1 })
+    .limit(limit)
+    .select("fullName avatar email username properties");
+
+  res.json(featureAgents);
 });
 const agentController = {
   getAgents,
   getSingleAgent,
   getAgentProperties,
   getRecentAgents,
+  getFeatureAgents,
 };
 export default agentController;

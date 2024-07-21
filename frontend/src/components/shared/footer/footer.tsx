@@ -1,5 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import LogoCard from "../logo";
+import { FilterLinks, PagesLinks } from "@/constants/links";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -7,68 +9,65 @@ const Footer = () => {
       // id="footer"
       className="min-h-[30vh] bg-muted"
     >
-      <div className="w-full flex flex-col px-[15px] md:px-[80px] pb-6 pt-24">
+      <div className="w-full flex flex-col px-[15px] md:px-[80px] pb-6 pt-10 sm:pt-24">
         {/* First Row*/}
         <div className="flex flex-wrap gap-5 items-start justify-between">
           {/* Left */}
           <div className="flex flex-col gap-1">
-            <LogoCard className="w-[90px] sm:w-[130px]" />
+            <LogoCard className="w-[110px] sm:w-[130px] " />
             <p className="text-sm font-[800] text-muted-foreground">
-              Amazing property webiste for agent, buyer
+              Amazing property webiste for agent, buyer{" "}
               <br className="max-sm:hidden" />
               and companies for ethiopian
             </p>
           </div>
 
           {/* Right */}
-          <div className="flex flex-wrap gap-x-12 gap-y-6">
+          <div className="flex flex-wrap max-sm:flex-col gap-x-12 gap-y-6">
+            <div className="flex flex-col gap-4">
+              <h2 className="font-bold text-xl">Filter</h2>
+              <div className="flex flex-col gap-1">
+                {FilterLinks.map((link, idx) => (
+                  <Link
+                    to={link.href}
+                    className="cursor-pointer text-muted-foreground hover:text-foreground transition"
+                    key={link.label + idx}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <div className="flex flex-col gap-4">
               <h2 className="font-bold text-xl">Pages Links</h2>
-              <ul className="flex flex-col gap-1">
-                <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Home
-                </li>
-                <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Properties
-                </li>
-                <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Agents
-                </li>
-                <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Subscription
-                </li>
-              </ul>
+              <div className="flex flex-col gap-1">
+                {PagesLinks.map((link, idx) => (
+                  <Link
+                    to={link.href}
+                    className="cursor-pointer text-muted-foreground hover:text-foreground transition"
+                    key={link.label + idx}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="flex flex-col gap-4">
-              <h2 className="font-bold text-xl">Company</h2>
+              <h2 className="font-bold text-xl">Companies</h2>
               <ul className="flex flex-col gap-1">
                 <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Ayat Realestate
+                  Ayat Real Estate
                 </li>
                 <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Noah Realstate
+                  Noah Real Estate
                 </li>
                 <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Ovid Realstate
-                </li>
-              </ul>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h2 className="font-bold text-xl">Resources</h2>
-              <ul className="flex flex-col gap-1">
-                <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Documentation
+                  Ovid Real Estate
                 </li>
                 <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Listing
-                </li>
-                <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  Press Confrence
-                </li>
-                <li className="cursor-pointer text-muted-foreground hover:text-foreground transition">
-                  News
+                  Gift Real Estate
                 </li>
               </ul>
             </div>

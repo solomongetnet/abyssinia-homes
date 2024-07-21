@@ -78,22 +78,14 @@ const PropertySchema: Schema = new Schema<IProperty>(
 );
 
 // Create and export the Property model
+PropertySchema.pre("save", function (next) {
+  const property: any = this;
+
+  if (property.propertyStatus === "for sale") {
+    property.price.period = undefined;
+  }
+  next();
+});
+
 const PropertyModel = model<IProperty>("Property", PropertySchema);
 export default PropertyModel;
-
-{
-  /*
-        
-         map: {
-      longitude: 0;
-      latitude: 0;
-    };
-    address: string;
-    country: string;
-    city: string;
-    street?: string;
-    subcity?: string;
-    neighborhood?: string;
-    region?: string;
-    zipCode?: number;*/
-}

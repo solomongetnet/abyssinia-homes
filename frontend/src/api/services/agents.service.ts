@@ -21,6 +21,13 @@ const agentServices = api.injectEndpoints({
         method: "GET",
       }),
     }),
+    // not used for yet
+    getFeatureAgents: builder.query<any[], { limit?: number | number }>({
+      query: ({ limit }) => ({
+        url: `/agent/feature?limit=${limit}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -28,4 +35,5 @@ export const {
   useGetAgentsQuery,
   useGetSingleAgentQuery,
   useGetRecentAgentsQuery,
+  useGetFeatureAgentsQuery,
 } = agentServices;

@@ -154,7 +154,7 @@ const MediaStep: FC<IProps> = ({ prevStep }) => {
         )}
       </div>
 
-      <footer className="mt-4 w-full flex max-md:flex-col md:justify-between">
+      <footer className="mt-4 w-full flex max-md:flex-col gap-2 md:justify-between">
         <Button
           onClick={handlePrevBtn}
           variant={"outline"}

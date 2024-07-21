@@ -1,11 +1,7 @@
 import { FC, useState } from "react";
 import { Copy, Share2, X } from "lucide-react";
 import { Button } from "../ui/button";
-import {
-  FaFacebookF,
-  FaTelegram,
-  FaWhatsapp,
-} from "react-icons/fa6";
+import { FaFacebookF, FaTelegram, FaWhatsapp } from "react-icons/fa6";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 interface IProps {
@@ -62,7 +58,7 @@ const SharePopover: FC<IProps> = ({ url }) => {
 
             <a
               target="_blank"
-              href={whatsappUrl}
+              href={telegramUrl}
               className="grid place-content-center w-full aspect-square rounded-full group bg-muted hover:bg-telegram transition cursor-pointer"
             >
               <FaTelegram className="text-telegram text-xl group-hover:text-white transition" />
@@ -70,7 +66,7 @@ const SharePopover: FC<IProps> = ({ url }) => {
 
             <a
               target="_blank"
-              href={telegramUrl}
+              href={whatsappUrl}
               className="grid place-content-center w-full aspect-square rounded-full group bg-muted hover:bg-whatsapp transition cursor-pointer"
             >
               <FaWhatsapp className="text-whatsapp  text-xl group-hover:text-white transition" />

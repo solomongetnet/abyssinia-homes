@@ -12,6 +12,7 @@ import { useGetSinglePropertyQuery } from "@/api/services/property.service";
 import Loader from "@/components/ui/loader";
 import VideoSection from "./_components/video";
 import { isValidUrl } from "@/utils/url";
+import CompanyDetailCard from "./_components/company-detail-card";
 
 const SinglePropertyPage: any = () => {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ const SinglePropertyPage: any = () => {
           <ImageContainer images={data.images as string[]} />
         </div>
 
-        <div className="w-full min-h-screen pt-10 max-md:flex max-md:flex-col lg:grid lg:grid-cols-[70%,30%] gap-6">
+        <div className="w-full min-h-screen pt-6 sm:pt-10 max-md:flex max-md:flex-col lg:grid lg:grid-cols-[70%,30%] gap-6">
           <div className="flex flex-col gap-4 md:gap-6">
             {/* Overview */}
             <Overview data={data} />
@@ -75,6 +76,7 @@ const SinglePropertyPage: any = () => {
 
             {/* Location */}
             <Location location={data.location} />
+
             {/* Video */}
             {data?.videoUrl && isValidUrl(data.videoUrl) && (
               <VideoSection videoUrl={data.videoUrl} />
@@ -86,9 +88,12 @@ const SinglePropertyPage: any = () => {
             )}
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className=" flex flex-col gap-2">
             {/*Post Owner Profile  */}
             <AgentCard agent={data?.author} />
+
+            {/* Company Detail */}
+            {data.company && <CompanyDetailCard company={data.company} />}
           </div>
         </div>
       </div>

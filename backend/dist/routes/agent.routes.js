@@ -10,5 +10,6 @@ router.get("/", agent_controller_1.default.getAgents);
 router.get("/single/:agentUsername", agent_controller_1.default.getSingleAgent);
 router.get("/properties/:agentUsername", agent_controller_1.default.getAgentProperties);
 router.get("/recent", agent_controller_1.default.getRecentAgents);
+router.get("/feature", agent_controller_1.default.getFeatureAgents);
 const agentRouter = router;
 exports.default = agentRouter;

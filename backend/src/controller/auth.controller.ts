@@ -68,7 +68,10 @@ const login = asyncHandler(async (req: Request, res: Response) => {
 
   // Know If User Is Exists
   // If User exists Retriev User Doc
-  const UserDoc: any = await UserModel.findOne({ email }, "role email password");
+  const UserDoc: any = await UserModel.findOne(
+    { email },
+    "role email password"
+  );
   if (!UserDoc) {
     res.status(404);
     throw new Error("Email or Passowrd are wrong");
@@ -107,7 +110,7 @@ const refreshToken = asyncHandler(async (req: Request, res: Response) => {
   const _refreshToken = req.cookies.refreshToken;
   if (!_refreshToken) {
     res.status(401);
-    return;
+    throw new Error("Please login");
   }
 
   // Decoded the resfresh token to get result
@@ -116,7 +119,7 @@ const refreshToken = asyncHandler(async (req: Request, res: Response) => {
     process.env.REFRESH_TOKEN_SECRET as string
   );
 
-  const userDoc = await UserModel.findById(decoded?.userId).select('role');
+  const userDoc = await UserModel.findById(decoded?.userId).select("role");
   if (!userDoc) {
     res.status(401);
     throw new Error("Can't find this account");

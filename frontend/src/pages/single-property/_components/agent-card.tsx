@@ -10,7 +10,7 @@ import NavigateToAgentBtn from "@/components/shared/buttons/navigate-to-agent-bt
 
 const AgentCard = ({ agent }: { agent: any }) => {
   return (
-    <div className="sticky top-[110px] py-10 px-4 sm:px-8 w-full h-fit bg-background rounded-lg shadow-md border-2">
+    <div className="md:sticky top-[110px] py-8 px-4 sm:px-8 w-full h-fit bg-background rounded-lg shadow-md border-2">
       <div className="w-full flex flex-col gap-6">
         <h2 className="text-lg font-bold">Meet Agent</h2>
         <div className="flex items-center gap-2">

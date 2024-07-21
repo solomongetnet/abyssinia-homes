@@ -40,7 +40,10 @@ const PropertiesLocation = () => {
                     </p>
                   </div>
 
-                  <CustomNavigate to="/properties" className="rounded-full">
+                  <CustomNavigate
+                    to={`/properties?location=${l.address.split(",")[1].trimStart()}`}
+                    className="rounded-full"
+                  >
                     <Button className="rounded-full" size={"icon"}>
                       <ArrowUpRight />
                     </Button>
